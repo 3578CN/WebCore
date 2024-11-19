@@ -5,22 +5,18 @@
 该框架能够实现团队开发架构的高度统一，简化基础开发工作，显著缩短开发周期。让开发者无需关注繁琐的基础代码处理，而是能够将更多精力集中在核心功能的设计与实现上，帮助团队更高效地推进项目开发，提升整体开发效率。
 
 ## 功能介绍
->WebUI         动态页面渲染框架   
+>WebView      动态页面渲染框架   
 WebSite       静态页解析框架   
-Handlers    请求的处理程序接口   
+Handlers      请求的处理程序接口   
 Security      安全验证框架   
 Common        工具类方法封装   
 
 ## 安装指南
 请按照以下步骤安装和配置项目：
 
-从 Git 引用：
+从 GitHub 克隆：
 ```bash
-git clone https://github.com/chengbin0503/3578.git
-```
-从包管理器引用：
-```bash
-CBC.WebCore
+git clone https://github.com/3578cn/WebCore.git
 ```
 
 ## 合作指南
