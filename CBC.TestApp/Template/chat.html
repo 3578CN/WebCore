@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <!-- 加载 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-4">
+    <div class="max-w-md mx-auto bg-white p-6 shadow-lg rounded-lg">
+        <div class="mb-4 flex items-center">
+            <label for="userInput" class="block text-sm font-medium text-gray-700 mr-4">用户</label>
+            <input type="text" id="userInput" class="flex-1 block w-full border border-gray-400 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+        </div>
+        <div class="mb-4 flex items-center">
+            <label for="messageInput" class="block text-sm font-medium text-gray-700 mr-4">消息</label>
+            <input type="text" id="messageInput" class="flex-1 block w-full border border-gray-400 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+        </div>
+        <div class="flex justify-end mb-4">
+            <input type="button" id="sendButton" value="发送消息" class="bg-blue-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+        </div>
+        <hr class="mb-4">
+        <div>
+            <ul id="messagesList" class="space-y-2 text-gray-700"></ul>
+        </div>
+    </div>
+
+    <!-- 加载 SignalR 和自定义的 JS 文件 -->
+    <script src="/common/signalr.js"></script>
+    <script src="/js/chat.js"></script>
+</body>
+</html>

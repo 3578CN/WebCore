@@ -1,0 +1,286 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "WebCore Configuration Schema",
+  "description": "该 JSON 架构用于描述 WebCore 系统的配置文件，包括站点配置、安全配置、自动更新配置和分页模板配置。",
+  "type": "object",
+  "properties": {
+    "webSettings": {
+      "type": "object",
+      "description": "网站配置，包括站点路由、模板路径和数据库连接。",
+      "properties": {
+        "routing": {
+          "type": "array",
+          "description": "站点独立路由配置，每个站点的 host 对应其配置文件。",
+          "items": {
+            "type": "object",
+            "properties": {
+              "host": {
+                "type": "string",
+                "description": "站点的域名。"
+              },
+              "configFile": {
+                "type": "string",
+                "description": "站点对应的配置文件路径。"
+              }
+            },
+            "required": [ "host", "configFile" ]
+          }
+        },
+        "templates": {
+          "type": "object",
+          "description": "模板根路径配置。",
+          "properties": {
+            "templatePath": {
+              "type": "string",
+              "description": "页面模板的根路径。"
+            },
+            "pagerTemplatePath": {
+              "type": "string",
+              "description": "分页模板的根路径。"
+            }
+          },
+          "required": [ "templatePath", "pagerTemplatePath" ]
+        },
+        "databaseConnections": {
+          "type": "array",
+          "description": "数据库连接字符串配置，包含多个数据库连接信息。",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "应用测试数据库连接的名称。"
+              },
+              "connectionString": {
+                "type": "string",
+                "description": "应用测试数据库的连接字符串。"
+              }
+            },
+            "required": [ "name", "connectionString" ]
+          }
+        }
+      },
+      "required": [ "routing", "templates", "databaseConnections" ]
+    },
+    "security": {
+      "type": "object",
+      "description": "安全配置，包括登录路径、授权路径和静态页面管理 IP 地址。",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "安全配置的类型。"
+        },
+        "login": {
+          "type": "object",
+          "description": "登录页面路径配置。",
+          "properties": {
+            "path": {
+              "type": "string",
+              "description": "登录页面的路径。"
+            }
+          },
+          "required": [ "path" ]
+        },
+        "authorizedPaths": {
+          "type": "array",
+          "description": "需要授权访问的路径配置。",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "description": "需要授权访问的路径。"
+              }
+            },
+            "required": [ "path" ]
+          }
+        },
+        "unrestrictedPaths": {
+          "type": "array",
+          "description": "无需授权即可访问的路径配置。",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "description": "无需授权即可访问的路径。"
+              }
+            },
+            "required": [ "path" ]
+          }
+        },
+        "staticPageManagementIPs": {
+          "type": "array",
+          "description": "静态页面管理的 IP 地址配置。",
+          "items": {
+            "type": "object",
+            "properties": {
+              "ip": {
+                "type": "string",
+                "description": "允许管理静态页面的 IP 地址。"
+              },
+              "mask": {
+                "type": "string",
+                "description": "对应的子网掩码。"
+              }
+            },
+            "required": [ "ip", "mask" ]
+          }
+        }
+      },
+      "required": [ "login", "authorizedPaths", "unrestrictedPaths", "staticPageManagementIPs" ]
+    },
+    "autoUpdate": {
+      "type": "object",
+      "description": "静态页文件自动更新配置。",
+      "properties": {
+        "interval": {
+          "type": "integer",
+          "description": "自动更新的时间间隔，单位为秒。"
+        },
+        "watchers": {
+          "type": "array",
+          "description": "监视器配置，定义监视文件变化的规则。",
+          "items": {
+            "type": "object",
+            "properties": {
+              "eventTypes": {
+                "type": "array",
+                "description": "监视的事件类型，包括更改、创建、删除和重命名。",
+                "items": {
+                  "type": "string",
+                  "enum": [ "Changed", "Created", "Deleted", "Renamed" ],
+                  "description": "事件类型。"
+                }
+              },
+              "path": {
+                "type": "string",
+                "description": "监视的路径。"
+              },
+              "includeSubDirectories": {
+                "type": "boolean",
+                "description": "是否包含子目录。"
+              }
+            },
+            "required": [ "eventTypes", "path", "includeSubDirectories" ]
+          }
+        },
+        "rules": {
+          "type": "array",
+          "description": "页面匹配规则，定义哪些页面需要自动更新。",
+          "items": {
+            "type": "object",
+            "properties": {
+              "pattern": {
+                "type": "string",
+                "description": "匹配页面的正则表达式，用于识别要更新的页面。"
+              },
+              "path": {
+                "type": "string",
+                "description": "适用于匹配规则的路径。"
+              },
+              "includeSubDirectories": {
+                "type": "boolean",
+                "description": "是否包含子目录。"
+              },
+              "interval": {
+                "type": "integer",
+                "description": "自动更新的时间间隔，单位为秒。"
+              }
+            },
+            "required": [ "pattern", "path", "includeSubDirectories", "interval" ]
+          }
+        }
+      },
+      "required": [ "interval", "watchers", "rules" ]
+    },
+    "pagerTemplate": {
+      "type": "object",
+      "description": "分页模板的 JSON 格式定义。",
+      "properties": {
+        "templateCode": {
+          "type": "string",
+          "description": "完整模板代码。"
+        },
+        "pagerNav": {
+          "type": "string",
+          "description": "分页导航模板。"
+        },
+        "valid_FirstPage": {
+          "type": "string",
+          "description": "首页链接模板（可点击）。"
+        },
+        "invalid_FirstPage": {
+          "type": "string",
+          "description": "首页文本模板（不可点击）。"
+        },
+        "valid_PreviousPage": {
+          "type": "string",
+          "description": "上一页链接模板（可点击）。"
+        },
+        "invalid_PreviousPage": {
+          "type": "string",
+          "description": "上一页文本模板（不可点击）。"
+        },
+        "valid_NextPage": {
+          "type": "string",
+          "description": "下一页链接模板（可点击）。"
+        },
+        "invalid_NextPage": {
+          "type": "string",
+          "description": "下一页文本模板（不可点击）。"
+        },
+        "valid_LastPage": {
+          "type": "string",
+          "description": "末页链接模板（可点击）。"
+        },
+        "invalid_LastPage": {
+          "type": "string",
+          "description": "末页文本模板（不可点击）。"
+        },
+        "valid_NumberPaginate": {
+          "type": "string",
+          "description": "数字分页显示（可点击）。"
+        },
+        "invalid_NumberPaginate": {
+          "type": "string",
+          "description": "数字分页显示（不可点击）。"
+        },
+        "unselected_DropdownPaginate": {
+          "type": "string",
+          "description": "下拉列表未选中项模板。"
+        },
+        "selected_DropdownPaginate": {
+          "type": "string",
+          "description": "下拉列表选中项模板。"
+        },
+        "prevPageCount": {
+          "type": "integer",
+          "description": "前面的页面数量。"
+        },
+        "nextPageCount": {
+          "type": "integer",
+          "description": "后面的页面数量。"
+        }
+      },
+      "required": [
+        "templateCode",
+        "pagerNav",
+        "valid_FirstPage",
+        "invalid_FirstPage",
+        "valid_PreviousPage",
+        "invalid_PreviousPage",
+        "valid_NextPage",
+        "invalid_NextPage",
+        "valid_LastPage",
+        "invalid_LastPage",
+        "valid_NumberPaginate",
+        "invalid_NumberPaginate",
+        "unselected_DropdownPaginate",
+        "selected_DropdownPaginate",
+        "prevPageCount",
+        "nextPageCount"
+      ]
+    }
+  }
+}

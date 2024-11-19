@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteConfiguration>
+  <!-- 页面字符编码配置：设置页面的字符编码格式。 -->
+  <pageEncoding value="utf-8" />
+
+  <!-- 错误页配置：指定不同类型错误发生时返回的错误页面路径。 -->
+  <!-- unauthorizedErrorPage: 指定当请求未经授权（403 错误）时返回的错误页面路径。 -->
+  <!-- notFoundErrorPage: 指定当请求的资源不存在或路径错误（404 错误）时返回的错误页面路径。 -->
+  <!-- missingFileErrorPage: 指定当请求的静态文件不存在（404 错误）时返回的错误页面路径。 -->
+  <errorPages unauthorizedErrorPage="/" notFoundErrorPage="/" missingFileErrorPage="/" />
+
+  <!-- URL 映射设置：配置请求 URL 与相应页面模板的映射。 -->
+  <urlMapping>
+    <!-- 首页路由配置：定义首页的 URL 模式与页面模板的映射关系。 -->
+    <!-- pattern: 指定匹配首页的 URL 模式。 -->
+    <!-- template: 指定用于渲染首页内容的模板文件。 -->
+    <!-- pagerTemplate: 指定分页模板文件。 -->
+    <!-- handlerType: 指定处理请求的处理程序类型。 -->
+    <!-- saveMethod: 指定页面处理后的保存方法。 -->
+    <!-- cacheDuration: 指定页面缓存的持续时间，以分钟为单位。 -->
+    <page pattern="/index.html" template="index.html" pagerTemplate="pagingTmpl.json" handlerType="CBC.TestApp.Handlers.TestPageHandler" saveMethod="cache" cacheDuration="10">
+      <parameter name="title" value="$1" />
+      <parameter name="content" value="$2" />
+    </page>
+
+    <page pattern="/list_(.*?).html" template="list.html" pagerTemplate="pagingTmpl.json" handlerType="CBC.TestApp.Handlers.TestPageHandler" saveMethod="cache" cacheDuration="20">
+      <parameter name="page" value="$1" />
+    </page>
+  </urlMapping>
+</siteConfiguration>

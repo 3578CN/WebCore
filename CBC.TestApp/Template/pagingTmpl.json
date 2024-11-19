@@ -1,0 +1,63 @@
+{
+  // 引用 JSON Schema。
+  "$schema": "http://www.3578.cn/json-schema/webcore-schema.json",
+
+  // 分页模板的 JSON 格式定义。
+  /*
+    PagerNav（分页导航）
+    FirstPage（首页）
+    PreviousPage（上一页）
+    NextPage（下一页）
+    LastPage（末页）
+    NumberPaginate（数字分页）
+    DropdownPaginate（下拉列表分页）
+    TotalRowCount（总行数）
+    PageSize（每页行数）
+    CurrentPage（当前页数）
+    TotalPageCount（总页数）
+    PageUrl（页面路径）
+    PageNumber（页码）
+  */
+  "pagerTemplate": {
+    // 完整模板代码模板。
+    "templateCode": "<span>$PagerNav$&nbsp;&nbsp;&nbsp;$FirstPage$&nbsp;$PreviousPage$&nbsp;$NextPage$&nbsp;$LastPage$</span><span>$NumberPaginate$</span><span>&nbsp;&nbsp;&nbsp;<select onchange='location=this.options[selectedIndex].value'>$DropdownPaginate$</select></span>",
+
+    // 分页导航模板。
+    "pagerNav": "共有$TotalRowCount$条记录&nbsp;&nbsp;每页$PageSize$条记录&nbsp;&nbsp;当前第$CurrentPage$/$TotalPageCount$页",
+
+    // 首页链接模板（可点击）。
+    "valid_FirstPage": "<a href=\"$PageUrl$\">首页</a>",
+    // 首页文本模板（不可点击）。
+    "invalid_FirstPage": "首页",
+
+    // 上一页链接模板（可点击）。
+    "valid_PreviousPage": "<a href=\"$PageUrl$\">上一页</a>",
+    // 上一页文本模板（不可点击）。
+    "invalid_PreviousPage": "上一页",
+
+    // 下一页链接模板（可点击）。
+    "valid_NextPage": "<a href=\"$PageUrl$\">下一页</a>",
+    // 下一页文本模板（不可点击）。
+    "invalid_NextPage": "下一页",
+
+    // 末页链接模板（可点击）。
+    "valid_LastPage": "<a href=\"$PageUrl$\">末页</a>",
+    // 末页文本模板（不可点击）。
+    "invalid_LastPage": "末页",
+
+    // 数字分页显示（可点击）。
+    "valid_NumberPaginate": "&nbsp;<a href=\"$PageUrl$\">$PageNumber$</a>&nbsp;",
+    // 数字分页显示（不可点击）。
+    "invalid_NumberPaginate": "&nbsp;[$PageNumber$]&nbsp;",
+
+    // 下拉列表未选中项模板。
+    "unselected_DropdownPaginate": "<option value=\"$PageUrl$\">$PageNumber$</option>",
+    // 下拉列表选中项模板。
+    "selected_DropdownPaginate": "<option value=\"$PageUrl$\" selected>$PageNumber$</option>",
+
+    // 前面的页面数量。
+    "prevPageCount": 4,
+    // 后面的页面数量。
+    "nextPageCount": 5
+  }
+}
