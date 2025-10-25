@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>标签解析框架测试页面</title>
+    <style>
+        /* 自定义简化样式 - 单行模式 */
+        body { font-family: Arial, sans-serif; background-color: #f3f3f3; margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; } 
+        .container { background-color: #fff; border: 1px solid #ccc; padding: 20px; max-width: 600px; width: 100%; } 
+        h1 { font-size: 24px; margin-bottom: 16px; } 
+        p { font-size: 16px; margin-bottom: 12px; } 
+        .parser-output { font-style: italic; color: #555; border: 1px dashed #ccc; padding: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>标签解析框架测试页面</h1>
+        <!-- 解析内容 -->
+        <p class="parser-output">标题：{$Title}</p>
+        <p class="parser-output">内容：{$Content}</p>
+    </div>
+    {$Data(CBC.TestApp.Handlers.Index_Parser):type=a;}
+</body>
+</html>

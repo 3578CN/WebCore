@@ -1,0 +1,61 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <Title>CBC 底层框架</Title>
+    <Authors>成斌</Authors>
+    <Copyright>成斌</Copyright>
+    <PackageProjectUrl>www.3578.cn</PackageProjectUrl>
+    <Description>CBC 底层框架。</Description>
+    <PackageReadmeFile></PackageReadmeFile>
+    <PackageLicenseFile></PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <!-- 确保在发布时不生成 .pdb 文件 -->
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- 引用 ASP.NET Core 框架 -->
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <!-- 引用 Serilog.AspNetCore 包 -->
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.2" />
+    <!-- 引用 Serilog.Sinks.File 包 -->
+    <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
+    <!-- 引用 Microsoft.Data.SqlClient 包 -->
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
+    <!-- 引用 MySql.Data 包 -->
+    <PackageReference Include="MySql.Data" Version="9.0.0" />
+    <!-- 引用 Newtonsoft.Json 包 -->
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="CBC.WebCore.csproj.vspscc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

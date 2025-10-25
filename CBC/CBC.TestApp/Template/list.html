@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表模板</title>
+    <script src="https://cdn.tailwindcss.com"></script> <!-- 引入 Tailwind CSS -->
+</head>
+<body class="bg-gray-100 p-6">
+    <h1 class="text-2xl font-bold mb-4">标签解析框架列表测试页面</h1>
+    <!-- 列表展示区域 -->
+    <div class="bg-white shadow-md rounded-lg overflow-hidden">
+        {$tag:PagerNav}
+        <table class="min-w-full table-auto">
+            <thead>
+                <tr class="bg-gray-200 text-gray-700">
+                    <th class="px-4 py-2">标题</th>
+                    <th class="px-4 py-2">内容</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <!-- 这里是解析后的数据 -->
+                {$Data(CBC.TestApp.Handlers.List_Parser):template=list_.html;pageSize=5;}
+
+            </tbody>
+        </table>
+
+    </div>
+</body>
+</html>

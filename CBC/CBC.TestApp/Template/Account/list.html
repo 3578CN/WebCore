@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>列表页</title>
+    <style type="text/css">
+        body {
+            font-family: 'Microsoft YaHei UI';
+            font-size: 14px;
+        }
+
+        .table-title {
+            text-align: center;
+            font-size: 24px; /* 加大字体大小 */
+            font-weight: bold; /* 加粗 */
+            margin-bottom: 20px; /* 标题与表格之间留出一些空间 */
+        }
+
+        .table-container {
+            display: table;
+            border-collapse: collapse;
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        .table-row {
+            display: table-row;
+        }
+
+        .table-cell {
+            display: table-cell;
+            width: 100px;
+            background-color: darkgreen;
+            border: solid #808080 1px;
+            text-align: center;
+            padding: 5px;
+            box-sizing: border-box;
+            color: white;
+        }
+
+        .table-content-cell {
+            background-color: white;
+            color: black;
+            transition: background-color 0.3s ease;
+        }
+
+        .table-row:nth-child(odd) .table-content-cell {
+            background-color: #f2f2f2;
+        }
+
+        .table-row:nth-child(even) .table-content-cell {
+            background-color: #ffffff;
+        }
+
+        .table-row:hover .table-content-cell {
+            background-color: #b3d9b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="table-title">数据列表</div>
+    <div class="table-container">
+        {$C:PageCode}
+    </div>
+    <div class="table-container">
+        <div class="table-row">
+            <div class="table-cell">ID</div>
+            <div class="table-cell">Title</div>
+            <div class="table-cell">Content</div>
+            <div class="table-cell">Date</div>
+            <div class="table-cell"></div>
+        </div>
+        {$C:List}
+    </div>
+
+</body>
+</html>
