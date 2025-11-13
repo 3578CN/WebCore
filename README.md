@@ -1,9 +1,9 @@
 # WebCore
-基于 ASP.NET Core 8.0 的 Web 底层框架。
+基于 ASP.NET Core 10.0 的 Web 底层框架。
 
 本项目现已完成开发，停止更新！
 
-这是我多年积累完成框架，前身是 .net framework 版本的 WebCore，现已完全迁移到 .net core 8.0。
+这是我多年积累完成框架，前身是 .net framework 版本的 WebCore。
 
  拥有完全版权，现在全部开源，毫无保留，随意使用，不过还请遵守开源协议。
 

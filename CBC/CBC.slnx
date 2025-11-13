@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="CBC.TestApp/CBC.TestApp.csproj" />
+  <Project Path="CBC.WebCore/CBC.WebCore.csproj" />
+</Solution>
